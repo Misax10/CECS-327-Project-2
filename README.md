@@ -1,6 +1,5 @@
-# CECS-327-Project-2
-Chatbot application using microservices
-Contributor:
+# CECS-327: Chatbot Application using microservices
+## Contributor:
 1. Khoa Diep
 2. Min Tang Ting
 
@@ -31,12 +30,12 @@ Before starting, make sure you have the following installed:
    cd backend
    npm init -y
    ```
-### Step2: Install Dependencies
+### Step 2: Install Dependencies
 Install the necessary npm packages:
 ```bash
 npm install express cors axios
 ```
-- Express : A web framework for Node.js
+- Express: A web framework for Node.js
 - CORS: Middleware to enable cross-origin resource sharing.
 - Axios: A promise-based HTTP client for making requests to external APIs.
 
@@ -45,13 +44,30 @@ Additionally, install **'nodemon'** as a development dependency:
 npm install --save-dev nodemon
 ```
 
-### Step3: Configue Scripts
+### Step 3: Configure Scripts
 Modify the **'package.json'** to include a script for starting the server using **'nodemon'**:
 ``` bash
 "scripts": {
   "start": "nodemon index.js"
 }
 ```
+### Step 4: Running the Server
+To start the server, run:
+``` bash
+npm run start
+```
+This will launch the Node.js server with **'nodemon'**, which automatically restarts the server upon file changes
 
+### Step 5: Testing the Setup
+Create a file named **'request.rest'** in the backend folder to test the server's authentication endpoint:
+``` bash
+POST http://localhost:3001/authenticate
+Content-Type: application/json
 
+{
+  "username": "testuser"
+}
+```
+### Step 6: Integrate Chat Functionality
+Register with ChatEngine.io and create a project. Use the provided API keys in the backend to authenticate users and manage chat functionalities. This allow all users in ChatEngine project to communicate through the API and platform.
  

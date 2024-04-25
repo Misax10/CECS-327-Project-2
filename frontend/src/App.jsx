@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Importing necessary React hooks and styles.
+import { useState } from "react";
+import "./App.css";
 
+// Importing the authentication and chat page components.
+import AuthPage from "./AuthPage";
+import ChatsPage from "./ChatsPage";
+
+// The main functional component of your application.
 function App() {
-  const [count, setCount] = useState(0)
+  // State hook for managing the user's authenticated status. 
+  // Initially, `user` is `undefined` indicating no user is logged in.
+  const [user, setUser] = useState(undefined);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  // Conditional rendering based on user authentication status:
+  if (!user) {
+    // If there is no user logged in, the AuthPage component is rendered.
+    // `onAuth` is a prop passed to the AuthPage that takes a `user` object
+    // and sets it as the current user using the `setUser` function.
+    return <AuthPage onAuth={(user) => setUser(user)} />;
+  } else {
+    // If a user is logged in, the ChatsPage component is rendered,
+    // and the logged-in user's data is passed to it via the `user` prop.
+    return <ChatsPage user={user} />;
+  }
 }
 
-export default App
+// Exporting the App component to be used in other parts of the application,
+// typically as the root component that gets mounted to the DOM.
+export default App;

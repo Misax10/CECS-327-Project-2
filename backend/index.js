@@ -5,6 +5,7 @@
 const express = require("express"); // Importing the Express library to handle routing and middleware
 const cors = require("cors");       // Importing CORS to allow the server to accept requests from different origins
 const axios = require("axios");     // Importing Axios for making HTTP requests to external services, such as ChatEngine
+const moment = require('moment-timezone')
 
 const app = express();              // Creating an instance of an Express app
 app.use(express.json());            // Middleware to parse JSON bodies of incoming requests
@@ -22,8 +23,16 @@ app.post("/authenticate", async (req, res) => {
       { username: username, secret: username, first_name: username }, // User data payload
       { headers: {"private-key": '648907b1-d76d-4253-9f8f-9818b6e9a02e'}} // Authentication header with private key
     );
+
+    // Get current time in PDT
+    const pdtTime = moment().tz('America/Los_Angeles').format('YYYY-MM-DD HH:mm:ss');
+
     // Sending the API response status and data back to the client
-    return res.status(response.status).json(response.data);
+    return res.status(response.status).json({
+      data:  response.data,
+      serverTimePDT: pdtTime
+    });
+    
   } catch (e) {
     // Handling errors that occur during the API request
     if (e.response) {

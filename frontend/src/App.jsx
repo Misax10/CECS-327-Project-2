@@ -4,7 +4,7 @@ import "./App.css";
 
 // Importing the authentication and chat page components.
 import AuthPage from "./AuthPage";
-import ChatsPage from "./ChatsPage";
+import ChatsPage from "./ChatPage";
 
 // The main functional component of your application.
 function App() {

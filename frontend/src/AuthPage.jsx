@@ -10,10 +10,18 @@ const AuthPage = (props) => {
 
     // Make a POST request to the server to authenticate the user
     axios
-      .post("http://localhost:3001/authenticate", { username: value }) // Sending the username to the backend
-      .then((r) => props.onAuth({ ...r.data, secret: value })) // If successful, invoke onAuth prop with response data and secret
-      .catch((e) => console.log("Auth Error", e)); // Log any errors to the console
-  };
+    axios.post("http://localhost:3001/authenticate", { username: value })
+    .then((response) => {
+      // Assuming the server responds with appropriate data that might include a secret
+      // Check your server's response structure and ensure it includes a secret if necessary
+      const userData = {
+        username: value, // Username from the form
+        secret: response.data.secret || 'default-secret' // Assuming 'secret' is part of the response, otherwise use a default or predefined secret
+      };
+      props.onAuth(userData);
+    })
+    .catch((error) => console.log("Auth Error", error));
+  }
 
   // Render the component
   return (

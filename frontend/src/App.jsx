@@ -12,6 +12,10 @@ function App() {
   // Initially, `user` is `undefined` indicating no user is logged in.
   const [user, setUser] = useState(undefined);
 
+  // Handles successful authentication
+  const handleAuth = (authUser) => {
+    setUser(authUser);
+  };
   // Conditional rendering based on user authentication status:
   if (!user) {
     // If there is no user logged in, the AuthPage component is rendered.

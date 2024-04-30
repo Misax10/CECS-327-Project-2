@@ -10,7 +10,6 @@
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 This repository contains the setup for a Node.js backend in a chat application project named `nodejs-reactjs-cecs327-chat`. The backend facilitates communication with ChatEngine.io to enable robust chat functionality.
-Currently, two official plugins are available:
 
 ## Prerequisites
 

@@ -47,22 +47,24 @@ Additionally, install **'nodemon'** as a development dependency:
 ```bash
 npm install --save-dev nodemon
 ```
+### Step 3: Create the index.js (backend- Node.js server using Express)
 
-### Step 3: Configure Scripts
+
+### Step 4: Configure Scripts
 Modify the **'package.json'** to include a script for starting the server using **'nodemon'**:
 ``` bash
 "scripts": {
   "start": "nodemon index.js"
 }
 ```
-### Step 4: Running the Server
+### Step 5: Running the Server
 To start the server, run:
 ``` bash
 npm run start
 ```
 This will launch the Node.js server with **'nodemon'**, which automatically restarts the server upon file changes
 
-### Step 5: Testing the Setup
+### Step 6: Testing the Setup
 Create a file named **'request.rest'** in the backend folder to test the server's authentication endpoint:
 ``` bash
 POST http://localhost:3001/authenticate
@@ -71,5 +73,5 @@ Content-Type: application/json
   "username": "testuser"
 }
 ```
-### Step 6: Integrate Chat Functionality
+### Step 7: Integrate Chat Functionality
 Register with ChatEngine.io and create a project. Use the provided API keys in the backend to authenticate users and manage chat functionalities. This allow all users in ChatEngine project to communicate through the API and platform.

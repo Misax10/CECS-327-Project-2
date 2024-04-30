@@ -17,6 +17,7 @@ Before starting, make sure you have the following installed:
 - Node.js
 - npm (Node Package Manager)
 - A REST Client extension for your IDE or code editor (for testing API endpoints).
+- VS Code (Installed Extension Rest Client for testing the server)
 
 ## Setup Instructions
 

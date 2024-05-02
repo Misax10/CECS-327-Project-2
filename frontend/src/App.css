@@ -1,102 +1,87 @@
-/* Sets the background image for the whole page, prevents it from repeating, and ensures it covers the entire viewport */
+/* Overall body styling */
 body {
   background-image: url('./assets/valley.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   height: 100vh;
   width: 100vw;
-  margin: 0px;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* Creates a background overlay with a gradient, centered both vertically and horizontally */
+/* Gradient overlay on the background for better text visibility */
 .background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(75deg, rgb(20, 23, 33) 0%, rgb(20, 23, 33) 50%, rgba(20, 23, 33,0.8) 100%);
-  display: table-cell;
-  vertical-align: middle;
+  background: rgba(20, 23, 33, 0.85);
 }
 
-/* Styling for the card that contains form elements, centered with max-width */
+/* Card styling for the authentication form */
 .form-card {
-  width: 50%;
-  max-width: 350px;
-  padding: 0% 25% 0% 25%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  width: auto;
+  max-width: 400px;
 }
 
-/* Style definitions for the main title of the form */
-.form-title { 
-  font-size: 42px; 
-  font-family: 'Avenir'; 
-  font-weight: 800; 
-  letter-spacing: 0.5px; 
-  color: #e8e8e8; 
-  padding-bottom: 12px; 
+/* Form title styling */
+.form-title {
+  font-size: 2rem;
+  color: #FFF;
+  margin-bottom: 1rem;
 }
 
-/* Style definitions for the subtitle of the form */
+/* Subtitle styling */
 .form-subtitle {
-  font-size: 18px;
-  font-family: 'Avenir';
-  letter-spacing: 0.5px;
-  color: #afafaf;
-  padding-bottom: 24px;
+  font-size: 1rem;
+  color: #CCC;
+  margin-bottom: 2rem;
 }
 
-/* Container for authentication input, with relative positioning for label overlay */
-.auth {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  padding-bottom: 12px;
-}
-
-/* Label for authentication inputs, absolutely positioned within the .auth container */
-.auth-label {
-  position: absolute;
-  top: 8px;
-  left: 18px;
-  font-size: 11px;
-  color: rgb(175, 175, 175);
-  font-family: Avenir;
-  width: 100px;
-}
-
-/* Style for the input fields inside the authentication form */
+/* Styling for authentication input fields */
 .auth-input {
-  background-color: #3e404b;
-  color: white;
-  font-family: "Avenir";
-  outline: none;
-  border: none;
+  background-color: #2A2C34;
+  color: #FFF;
+  border: 2px solid transparent;
   border-radius: 8px;
-  padding: 24px 18px 12px 18px;
-  width: calc(100% - 36px);
-  margin-bottom: 12px;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
 }
 
-/* Button styles for authentication actions */
+.auth-input:focus {
+  border-color: #fa541c;
+}
+
+/* Label styling */
+.auth-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #BBB;
+}
+
+/* Button styling */
 .auth-button {
   width: 100%;
-  height: 53px;
-  color: white;
+  padding: 0.75rem;
   background-color: #fa541c;
+  color: white;
   border: none;
-  outline: none;
   border-radius: 8px;
-  font-family: "Avenir";
   cursor: pointer;
-  transition: all .44s ease;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Hover effect for the button, making it slightly brighter on hover */
-.auth-button:hover { filter: brightness(145%); }
-
-/* Wrapper for the chat interface, with defined height, width, and central margin */
-.chat-wrapper {
-  height: 80vh; 
-  width: 80%;
-  margin-left: 10%; 
-  color: white; 
-  background: rgb(43, 47, 60);
+.auth-button:hover {
+  background-color: #fc6621;
+  transform: translateY(-2px);
 }

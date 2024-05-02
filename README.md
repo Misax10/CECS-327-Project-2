@@ -118,3 +118,34 @@ Content-Type: application/json
 ```
 ### Step 7: Integrate Chat Functionality
 Register with ChatEngine.io and create a project. Use the provided API keys in the backend to authenticate users and manage chat functionalities. This allow all users in ChatEngine project to communicate through the API and platform.
+
+
+### Step 8: Frontend Development with React
+To start developing the frontend of the application, use Vite, a modern build tool for JavaScript applications, particularly well-suited for React projects. Follow these steps to set up your React frontend:
+
+1. **Navigate to the Root Directory:**
+   Open your terminal and change the directory back to the root of your project (if you are not already there) by running: ```  cd.. ``` in the terminal
+
+2. **Create a New React Project:**
+Execute the following command to create a new React project using Vite. This command initializes a new project and allows you to specify React as your framework of choice: ```npm create vite@latest```
+
+   When prompted, choose the following options:
+   - **Project name:** `frontend`
+   - **Framework:** `React`
+   - **Variants:** `JavaScript`
+
+3. **Install Dependencies:**
+Change to the newly created `frontend` directory and install all necessary dependencies: ```cd fronted``` then ```npm install```
+
+4. **Modify React Strict Mode (Optional):**
+By default, React projects created with Vite are in strict mode, which can be helpful during development for highlighting potential problems. However, if you need to disable strict mode, modify the `main.jsx` file:
+- Open `main.jsx`.
+- Locate the `<React.StrictMode>` tags and remove them or comment them out.
+
+5. **Start the Development Server:**
+Launch the development server to see your new React app in action: ```npm run dev```
+
+
+
+
+

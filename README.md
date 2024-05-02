@@ -141,9 +141,94 @@ Change to the newly created `frontend` directory and install all necessary depen
 By default, React projects created with Vite are in strict mode, which can be helpful during development for highlighting potential problems. However, if you need to disable strict mode, modify the `main.jsx` file:
 - Open `main.jsx`.
 - Locate the `<React.StrictMode>` tags and remove them or comment them out.
+``` bash
+// Importing necessary React hook for state management
+import { useState } from "react";
+
+// Importing stylesheet for the application
+import "./App.css";
+
+// Importing components for authentication and chat pages
+import AuthPage from "./AuthPage";
+import ChatsPage from "./ChatsPage";
+
+// Main App component
+function App() {
+  // State hook for managing user state, initially set to undefined
+  const [user, setUser] = useState(undefined);
+
+  // Conditional rendering based on user state
+  if (!user) {
+    // If there is no user, AuthPage is rendered to allow user authentication.
+    // onAuth is a prop expecting a function that updates the user state
+    return <AuthPage onAuth={(user) => setUser(user)} />;
+  } else {
+    // If there is a user, ChatsPage is rendered to display the chat interface.
+    // user is passed as a prop to ChatsPage for user-specific operations
+    return <ChatsPage user={user} />;
+  }
+}
+
+// Exporting App component to be used in other parts of the application
+export default App;
+
+```
 
 5. **Start the Development Server:**
 Launch the development server to see your new React app in action: ```npm run dev```
+
+### Step 9: Create `AuthPage.jsx` Component
+
+Create a component named `AuthPage.jsx` to handle user authentication in your React application. This component will use Axios to make HTTP requests to your backend authentication service.
+
+1. **Set Up Axios and Component Structure:**
+   Begin by importing Axios for HTTP requests and setting up the functional component structure.
+   ```jsx
+   import axios from 'axios';
+
+   const AuthPage = (props) => {
+       ...
+   };
+
+   export default AuthPage;
+   ```
+2. **Handle Form Submission:**
+   Implement a function to handle form submissions. This function should prevent the default form     action, extract the username from the form, and make a POST request to the authentication endpoint
+   ```jsx
+   const onSubmit = (e) => {
+    e.preventDefault();
+    const { value } = e.target[0];
+    axios.post("http://localhost:3001/authenticate", { username: value })
+        .then(r => {
+            props.onAuth({ ...r.data, secret: value });
+        })
+        .catch(e => {
+            console.log("Auth Error", e);
+        });
+   };
+   ```
+3. **Build the UI:**
+      Render a form that includes:
+      - A welcome title
+      - A subtitle prompting the user to set their username
+      - A labeled input for the username
+      - A submit button
+   ```jsx
+   return (
+    <div className="background">
+        <form onSubmit={onSubmit} className="form-card">
+            <div className="form-title">Welcome 👋</div>
+            <div className="form-subtitle">Set a username to get started</div>
+            <div className="auth">
+                <div className="auth-label">Username</div>
+                <input className="auth-input" name="username" />
+                <button className="auth-button" type="submit">Enter</button>
+            </div>
+        </form>
+    </div>
+   );
+
+   ```
 
 
 
